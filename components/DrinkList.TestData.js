@@ -30,32 +30,32 @@ const drinks = [
     },
     {
         name: "Rum and Coke",
-        picture: require("../assets/drinks/old-fashioned.jpg"),
+        picture: require("../assets/drinks/default-drink.jpg"),
         description: "",
     },
     {
         name: "Pina Colada",
-        picture: require("../assets/drinks/old-fashioned.jpg"),
+        picture: require("../assets/drinks/default-drink.jpg"),
         description: "",
     },
     {
         name: "Moscow Mule",
-        picture: require("../assets/drinks/old-fashioned.jpg"),
+        picture: require("../assets/drinks/default-drink.jpg"),
         description: "",
     },
     {
         name: "Negroni",
-        picture: require("../assets/drinks/old-fashioned.jpg"),
+        picture: require("../assets/drinks/default-drink.jpg"),
         description: "",
     },
     {
         name: "Sex on the Beach",
-        picture: require("../assets/drinks/old-fashioned.jpg"),
+        picture: require("../assets/drinks/default-drink.jpg"),
         description: "",
     },
     {
         name: "Kamikaze",
-        picture: require("../assets/drinks/old-fashioned.jpg"),
+        picture: require("../assets/drinks/default-drink.jpg"),
         description: "",
     },
 
