@@ -1,14 +1,20 @@
 import {StyleSheet, FlatList, Text, View, Image, TouchableOpacity} from "react-native";
 import drinks from "./DrinkList.TestData.js";
 
-const DrinkList = ({ navigation }) => {
+const DrinkList = ({navigation}) => {
     return (
         <View style={styles.container}>
             <FlatList
                 data={drinks}
                 renderItem={
                     ({item}) => (
-                        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink")}>
+                        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink",
+                            {
+                                name: item.name,
+                                picture: item.picture,
+                                description: item.description,
+                            }
+                        )}>
                             <View style={styles.pictureContainer}>
                                 <Image source={item.picture} style={styles.picture}></Image>
                             </View>
