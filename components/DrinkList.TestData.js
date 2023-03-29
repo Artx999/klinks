@@ -3,6 +3,18 @@ const drinks = [
         name: "Mojito",
         picture: require("../assets/drinks/mojito.jpg"),
         description: "Dette er den offisielle oppskriften på cocktailen Mojito fra the International Bartenders Association. Mojito har en deilig smak av lime og mynte, og inneholder også rom og club soda.",
+        ingredients: [
+            {ingredient: "rom, hvit", amount: {size: 4, unit: "cl"}},
+            {ingredient: "limesaft", amount: {size: 2, unit: "cl"}},
+            {ingredient: "mynte", amount: {size: 3, unit: "kvaster"}},
+            {ingredient: "sukker", amount: {size: 2, unit: "ts"}},
+            {ingredient: "club soda"},
+        ],
+        instructions: [
+            "Mos mynten sammen med sukker og limejuice nederst i et glass. Bruk friskpresset limejuice.",
+            "Fyll opp med is. Tilsett rom, og topp med sodavann.",
+            "Pynt med en myntekvast, og server med sugerør."
+        ]
     },
     {
         name: "Martini",
