@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         marginVertical: 10
     },
     header: {
-        fontSize: 30
+        fontSize: 25
     }
 })
 
