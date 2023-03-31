@@ -1,48 +1,27 @@
 import {Image, StyleSheet, Text, View} from "react-native";
+import Ingredients from "./Ingredients";
 
 const Drink = ({route}) => {
+    const drink = route.params.drink;
+
     return (
-        <View style={styles.drinkPage}>
-            <View style={styles.pictureContainer}>
-                <Image source={route.params.picture} style={styles.picture}></Image>
-            </View>
+        <View>
             <View style={styles.text}>
-                <Text style={styles.name}>{route.params.name}</Text>
-                <Text style={styles.description}>{route.params.description}</Text>
+                <Text style={styles.name}>{drink.name}</Text>
+                <Text style={styles.description}>{drink.description}</Text>
             </View>
+            <Ingredients ingredients={drink.ingredients}></Ingredients>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    drinkPage: {
-        flexDirection: "row",
-        height: 100,
-        width: "100%",
-        marginVertical: 5,
-    },
-    pictureContainer: {
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    picture: {
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        resizeMode: "cover",
-        aspectRatio: 1,
-        left: 0,
-    },
     text: {
-        flex: 4,
     },
     name: {
-        padding: 10,
         fontSize: 18,
     },
     description: {
-        paddingHorizontal: 10,
     },
 })
 

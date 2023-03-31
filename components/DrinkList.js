@@ -8,13 +8,7 @@ const DrinkList = ({navigation}) => {
                 data={drinks}
                 renderItem={
                     ({item}) => (
-                        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink",
-                            {
-                                name: item.name,
-                                picture: item.picture,
-                                description: item.description,
-                            }
-                        )}>
+                        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink", {drink: item})}>
                             <View style={styles.pictureContainer}>
                                 <Image source={item.picture} style={styles.picture}></Image>
                             </View>
