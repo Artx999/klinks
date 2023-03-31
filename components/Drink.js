@@ -9,7 +9,7 @@ const Drink = ({route}) => {
         <View style={styles.drinkPage}>
             <View style={styles.top}>
                 <View style={styles.pictureContainer}>
-                    <Image source={drink.picture} style={styles.picture}></Image>
+                    <Image source={drink.picture} style={styles.picture} />
                 </View>
                 <View style={styles.text}>
                     <Text style={styles.name}>{drink.name}</Text>

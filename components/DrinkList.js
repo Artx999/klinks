@@ -10,7 +10,7 @@ const DrinkList = ({navigation}) => {
                     ({item}) => (
                         <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink", {drink: item})}>
                             <View style={styles.pictureContainer}>
-                                <Image source={item.picture} style={styles.picture}></Image>
+                                <Image source={item.picture} style={styles.picture} />
                             </View>
                             <View style={styles.text}>
                                 <Text style={styles.name}>{item.name}</Text>
