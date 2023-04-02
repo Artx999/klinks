@@ -1,11 +1,44 @@
 import {StyleSheet, FlatList, Text, View, Image, TouchableOpacity} from "react-native";
-import drinks from "./DrinkList.TestData.js";
+import {useEffect, useState} from "react";
+import {collection, getDocs, query} from "firebase/firestore";
+import {db} from "../firebaseConfig";
 
 const DrinkList = ({navigation}) => {
+    const [drinks, setDrinks] = useState([]);
+    const [limit, setLimit] = useState(9);
+    const [lastVisible, setLastVisible] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [refreshing, setRefreshing] = useState(false);
+
+    const retrieveData = async () => {
+        try {
+            setLoading(true);
+            console.log('Retrieving Data');
+
+            const initialQuery = query(collection(db, "drinks"));
+
+            let docSnap = await getDocs(initialQuery);
+
+            let docData = docSnap.docs.map(document => document.data());
+
+            setDrinks(docData);
+            setLastVisible(docData[docData.length - 1].id);
+            setLoading(false);
+        }
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        retrieveData();
+    }, [])
+
     return (
         <View style={styles.container}>
             <FlatList
                 data={drinks}
+
                 renderItem={
                     ({item}) => (
                         <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink", {drink: item})}>
@@ -19,6 +52,12 @@ const DrinkList = ({navigation}) => {
                         </TouchableOpacity>
                     )
                 }
+
+                onEndReached={() => {
+                    console.log("Should lazy load now!")
+                }}
+
+                refreshing={refreshing}
             />
         </View>
     );
