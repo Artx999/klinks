@@ -1,11 +1,11 @@
-import {StyleSheet, FlatList, Text, View, Image, TouchableOpacity} from "react-native";
+import {StyleSheet, FlatList, Text, View, Image, TouchableOpacity, ActivityIndicator} from "react-native";
 import {useEffect, useState} from "react";
-import {collection, getDocs, query} from "firebase/firestore";
+import {collection, getDocs, limit, orderBy, query, startAfter} from "firebase/firestore";
 import {db} from "../firebaseConfig";
 
 const DrinkList = ({navigation}) => {
     const [drinks, setDrinks] = useState([]);
-    const [limit, setLimit] = useState(9);
+    const [limitLoad, setLimitLoad] = useState(7); // TODO: Use other number later. Maybe dynamic?
     const [lastVisible, setLastVisible] = useState(null);
     const [loading, setLoading] = useState(false);
     const [refreshing, setRefreshing] = useState(false);
@@ -15,18 +15,53 @@ const DrinkList = ({navigation}) => {
             setLoading(true);
             console.log('Retrieving Data');
 
-            const initialQuery = query(collection(db, "drinks"));
-
-            let docSnap = await getDocs(initialQuery);
-
-            let docData = docSnap.docs.map(document => document.data());
+            const initialQuery = query(
+                collection(db, "drinks"),
+                orderBy("name"),
+                limit(limitLoad)
+            );
+            const docSnap = await getDocs(initialQuery);
+            const docData = docSnap.docs.map(document => document.data());
 
             setDrinks(docData);
-            setLastVisible(docData[docData.length - 1].id);
+            setLastVisible(docData[docData.length - 1].name);
             setLoading(false);
         }
         catch (error) {
             console.log(error);
+        }
+    }
+
+    const retrieveMoreData = async () => {
+        try {
+            setRefreshing(true);
+            console.log('Retrieving additional Data');
+
+            const additionalQuery = query(
+                collection(db, "drinks"),
+                orderBy("name"),
+                startAfter(lastVisible),
+                limit(limitLoad)
+            );
+            const docSnap = await getDocs(additionalQuery);
+            const docData = docSnap.docs.map(document => document.data());
+
+            setDrinks([...drinks, ...docData]);
+            setLastVisible(docData[docData.length - 1].name);
+            setRefreshing(false);
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+    const renderFooter = () => {
+        try {
+            if (loading) return (<ActivityIndicator />)
+            else return null;
+        }
+        catch (error) {
+            console.log(error)
         }
     }
 
@@ -53,8 +88,10 @@ const DrinkList = ({navigation}) => {
                     )
                 }
 
+                ListFooterComponent={renderFooter}
+
                 onEndReached={() => {
-                    console.log("Should lazy load now!")
+                    retrieveMoreData();
                 }}
 
                 refreshing={refreshing}
