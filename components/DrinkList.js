@@ -1,7 +1,8 @@
-import {StyleSheet, FlatList, Text, View, Image, TouchableOpacity, ActivityIndicator} from "react-native";
+import {StyleSheet, FlatList, View, ActivityIndicator} from "react-native";
 import {useEffect, useState} from "react";
 import {collection, getDocs, limit, orderBy, query, startAfter} from "firebase/firestore";
 import {db} from "../firebaseConfig";
+import DrinkListItem from "./DrinkListItem";
 
 const DrinkList = ({navigation}) => {
     const [drinks, setDrinks] = useState([]);
@@ -76,15 +77,7 @@ const DrinkList = ({navigation}) => {
 
                 renderItem={
                     ({item}) => (
-                        <TouchableOpacity style={styles.item} onPress={() => navigation.navigate("Drink", {drink: item})}>
-                            <View style={styles.pictureContainer}>
-                                <Image source={item.picture} style={styles.picture} />
-                            </View>
-                            <View style={styles.text}>
-                                <Text style={styles.name}>{item.name}</Text>
-                                <Text numberOfLines={2} style={styles.description}>{item.description}</Text>
-                            </View>
-                        </TouchableOpacity>
+                        <DrinkListItem drink={item} navigation={navigation} />
                     )
                 }
 
@@ -105,36 +98,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         width: "100%",
-    },
-    item: {
-        flexDirection: "row",
-        height: 100,
-        width: "100%",
-        marginVertical: 5,
-    },
-    pictureContainer: {
-        flex: 1,
-        flexDirection: "row",
-        alignItems: "center",
-    },
-    picture: {
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        resizeMode: "cover",
-        aspectRatio: 1,
-        left: 0,
-    },
-    text: {
-        flex: 4,
-        overflow: "hidden"
-    },
-    name: {
-        padding: 10,
-        fontSize: 18,
-    },
-    description: {
-        paddingHorizontal: 10,
     },
 })
 
