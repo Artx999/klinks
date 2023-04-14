@@ -4,12 +4,13 @@ import Instructions from "./Instructions";
 
 const Drink = ({route}) => {
     const drink = route.params.drink;
+    const drinkImage = route.params.drinkImage;
 
     return (
         <View style={styles.drinkPage}>
             <View style={styles.top}>
                 <View style={styles.pictureContainer}>
-                    <Image source={drink.picture} style={styles.picture} />
+                    <Image source={drinkImage} style={styles.picture} />
                 </View>
                 <View style={styles.text}>
                     <Text style={styles.name}>{drink.name}</Text>
