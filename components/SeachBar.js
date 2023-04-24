@@ -1,21 +1,20 @@
+import {StyleSheet, TextInput, View} from "react-native";
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+const SearchBar = ({ onChange }) => {
+    const [value, setValue] = useState('');
 
-const SearchBar = ({ onSearch }) => {
-    const [searchTerm, setSearchTerm] = useState('');
-
-    const handleSearch = () => {
-        onSearch(searchTerm);
+    const handleOnChange = (text) => {
+        setValue(text);
+        onChange(text);
     };
 
     return (
         <View style={styles.container}>
             <TextInput
                 style={styles.input}
-                value={searchTerm}
-                onChangeText={setSearchTerm}
-                onSubmitEditing={handleSearch}
-                placeholder="Search..."
+                placeholder="Search here"
+                onChangeText={handleOnChange}
+                value={value}
             />
         </View>
     );
@@ -23,13 +22,13 @@ const SearchBar = ({ onSearch }) => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#f1f1f1',
-        borderRadius: 8,
-        padding: 8,
-        margin: 8,
+        margin: 10,
+        borderRadius: 10,
+        backgroundColor: 'grey',
     },
     input: {
-        height: 40,
+        padding: 10,
+        fontSize: 16,
     },
 });
 
