@@ -1,71 +1,31 @@
-import {StyleSheet, Text, TextInput, View} from "react-native";
+import {StyleSheet, Text, TextInput, View, Button} from "react-native";
 import React, { useState } from 'react';
 import {collection, getDocs, query} from "firebase/firestore";
 import {db} from "../firebaseConfig";
 
-const SearchBar = ({ onChange }) => {
-    const [value, setValue] = useState('');
-
-    const handleOnChange = (text) => {
-        setValue(text);
-        onChange(text);
-    };
-
-
-};
-
-const searchingName = async () => {
-    try {
-        setRefreshing(true);
-        console.log('Retrieving additional Data');
-
-        const [searchText, setSearchText] = useState('');
-        const namedb = query(
-            collection(db, "name"),
-        );
-
-
-        const docSnap = await getDocs(namedb);
-        const docData = docSnap.docs.map(document => document.data());
-
-        setDrinks([...drinks, ...docData]);
-        setLastVisible(docData[docData.length - 1].name);
-        setRefreshing(false);
-    }
-    catch (error) {
-        console.log(error)
-    }
+const SearchBar = () => {
+    const [searchText, setSearchText] = useState('');
+    const [result, setResult] = useState('');
 
     const handleSearch = () => {
-        if(db.includes(searchText)) {
-            setName(searchText)
+        if (searchText === 'example') {
+            setResult('Search term found');
+        } else {
+            setResult('Search term not found');
         }
-        else {
-            setName('Drink not found')
-        }
-    }
+    };
+
     return (
-        <View style={styles.container}>
+        <View>
             <TextInput
-                style={styles.input}
-                placeholder="Search here"
+                style={{ borderWidth: 1, padding: 10, margin: 10 }}
+                placeholder="Enter search term"
                 onChangeText={(text) => setSearchText(text)}
-                value={value}
+                value={searchText}
             />
+            <Button title="Search" onPress={handleSearch} />
+            <Text>{result}</Text>
         </View>
     );
-}
-
-const styles = StyleSheet.create({
-    container: {
-        margin: 10,
-        borderRadius: 10,
-        backgroundColor: 'grey',
-    },
-    input: {
-        padding: 10,
-        fontSize: 16,
-    },
-});
-
+};
 export default SearchBar;
