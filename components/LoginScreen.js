@@ -5,7 +5,7 @@ import * as Google from "expo-auth-session/providers/google";
 
 WebBrowser.maybeCompleteAuthSession();
 
-const LoginScreen = ({navigation}) => {
+const LoginScreen = () => {
     const [token, setToken] = useState("");
     const [userInfo, setUserInfo] = useState(null);
 
@@ -50,7 +50,6 @@ const LoginScreen = ({navigation}) => {
             ) : (
                 <Text style={styles.text}>{userInfo.name}</Text>
             )}
-            <Button title="Home screen" onPress={() => navigation.navigate('Home')}></Button>
         </View>
     )
 }

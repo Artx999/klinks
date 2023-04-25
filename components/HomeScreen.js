@@ -1,11 +1,16 @@
 import DrinkList from "./DrinkList";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet} from "react-native";
+import Drink from "./Drink";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 const HomeScreen = ({navigation}) => {
     return (
-        <View style={styles.container}>
-            <DrinkList navigation={navigation}></DrinkList>
-        </View>
+        <Stack.Navigator>
+            <Stack.Screen name="DrinkList" component={DrinkList} navigation={navigation}/>
+            <Stack.Screen name="Drink" component={Drink}/>
+        </Stack.Navigator>
     )
 }
 
