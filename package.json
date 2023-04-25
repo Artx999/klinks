@@ -10,6 +10,7 @@
   "dependencies": {
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@react-navigation/bottom-tabs": "^6.5.7",
     "expo": "~48.0.11",
     "expo-status-bar": "~1.4.4",
     "firebase": "^9.17.2",
@@ -22,7 +23,8 @@
     "expo-crypto": "~12.2.1",
     "expo-web-browser": "~12.1.1",
     "expo-splash-screen": "~0.18.1",
-    "expo-dev-client": "~2.2.1"
+    "expo-dev-client": "~2.2.1",
+    "@expo/vector-icons": "^13.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
