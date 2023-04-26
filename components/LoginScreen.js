@@ -42,7 +42,7 @@ const LoginScreen = () => {
         <View style={styles.container}>
             {userInfo === null ? (
                 <FontAwesome5.Button  disabled={!request} name="google" onPress={() => {promptAsync()}}>
-                    <Text>Log In With Google</Text>
+                    <Text style={styles.loginButtonText}>Log In With Google</Text>
                 </FontAwesome5.Button>
             ) : (
                 <Text style={styles.text}>{userInfo.name}</Text>
@@ -58,6 +58,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    loginButtonText: {
+        color: "white",
+        fontWeight: "bold"
+    }
 });
 
 
