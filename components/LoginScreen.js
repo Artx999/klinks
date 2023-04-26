@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
+import { FontAwesome5 } from '@expo/vector-icons';
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -40,13 +41,9 @@ const LoginScreen = () => {
     return (
         <View style={styles.container}>
             {userInfo === null ? (
-                <Button
-                    title="Sign in with Google"
-                    disabled={!request}
-                    onPress={() => {
-                        promptAsync();
-                    }}
-                />
+                <FontAwesome5.Button  disabled={!request} name="google" onPress={() => {promptAsync()}}>
+                    <Text>Log In With Google</Text>
+                </FontAwesome5.Button>
             ) : (
                 <Text style={styles.text}>{userInfo.name}</Text>
             )}
