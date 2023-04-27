@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { FontAwesome5 } from '@expo/vector-icons';
+import * as AuthSession from "expo-auth-session";
+
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -37,18 +39,33 @@ const LoginScreen = () => {
             // Add your own error handler here
         }
     };
+    const logout = async () => {
+        try {
+            await AuthSession.revokeAsync(
+                { token: token },
+                { revocationEndpoint: "https://oauth2.googleapis.com/revoke?token={access_token}" }
+            );
+            setUserInfo(null);
+        } catch (error) {
+            console.error("Logout failed:", error);
+        }
+    };
 
     return (
+
         <View style={styles.container}>
-            {userInfo === null ? (
-                <FontAwesome5.Button  disabled={!request} name="google" onPress={() => {promptAsync()}}>
-                    <Text>Log In With Google</Text>
-                </FontAwesome5.Button>
-            ) : (
-                <Text style={styles.text}>{userInfo.name}</Text>
-            )}
-        </View>
-    )
+    {userInfo === null ? (
+        <FontAwesome5.Button  disabled={!request} name="google" onPress={() => {promptAsync()}}>
+            <Text>Log In With Google</Text>
+        </FontAwesome5.Button>
+    ) : (
+        <FontAwesome5.Button onPress={logout}>
+            <Text>Logout {userInfo.name}</Text>
+        </FontAwesome5.Button>
+    )}
+</View>
+
+)
 }
 
 const styles = StyleSheet.create({
