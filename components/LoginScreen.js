@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import { FontAwesome5 } from '@expo/vector-icons';
+import * as AuthSession from "expo-auth-session";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -38,6 +39,24 @@ const LoginScreen = () => {
         }
     };
 
+    const logout = async () => {
+        try {
+            await AuthSession.revokeAsync(
+                    { token: token },
+                    { revocationEndpoint: "https://oauth2.googleapis.com/revoke?token={access_token}" }
+            );
+            setUserInfo(null);
+        } catch (error) {
+            console.error("Logout failed:", error);
+        }
+    };
+
+
+    /*const logout = () => {
+        setToken("")
+        setUserInfo(null);
+    }*/
+
     return (
         <View style={styles.container}>
             {userInfo === null ? (
@@ -45,7 +64,9 @@ const LoginScreen = () => {
                     <Text>Log In With Google</Text>
                 </FontAwesome5.Button>
             ) : (
-                <Text style={styles.text}>{userInfo.name}</Text>
+                <FontAwesome5.Button onPress={logout}>
+                    <Text>Logout {userInfo.name}</Text>
+                </FontAwesome5.Button>
             )}
         </View>
     )
