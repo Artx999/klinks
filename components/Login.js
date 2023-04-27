@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import {useEffect, useState} from "react";
+import {StyleSheet, Text, View, Button} from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
-import { FontAwesome5 } from '@expo/vector-icons';
+import {FontAwesome5} from '@expo/vector-icons';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const LoginScreen = () => {
+const Login = ({setUserInfo}) => {
     const [token, setToken] = useState("");
-    const [userInfo, setUserInfo] = useState(null);
 
     const [request, response, promptAsync] = Google.useAuthRequest({
         clientId: "488317155424-og3ekdvksu4snuirldrbd5oo0ns2spkn.apps.googleusercontent.com",
@@ -27,7 +26,7 @@ const LoginScreen = () => {
             const response = await fetch(
                 "https://www.googleapis.com/userinfo/v2/me",
                 {
-                    headers: { Authorization: `Bearer ${token}` },
+                    headers: {Authorization: `Bearer ${token}`},
                 }
             );
 
@@ -39,15 +38,11 @@ const LoginScreen = () => {
     };
 
     return (
-        <View style={styles.container}>
-            {userInfo === null ? (
-                <FontAwesome5.Button  disabled={!request} name="google" onPress={() => {promptAsync()}}>
-                    <Text style={styles.loginButtonText}>Log In With Google</Text>
-                </FontAwesome5.Button>
-            ) : (
-                <Text style={styles.text}>{userInfo.name}</Text>
-            )}
-        </View>
+        <FontAwesome5.Button disabled={!request} name="google" onPress={() => {
+            promptAsync()
+        }}>
+            <Text style={styles.loginButtonText}>Log In With Google</Text>
+        </FontAwesome5.Button>
     )
 }
 
@@ -65,4 +60,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default LoginScreen
+export default Login
