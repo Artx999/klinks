@@ -3,6 +3,8 @@ import {StyleSheet, Text, View, Button} from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import {FontAwesome5} from '@expo/vector-icons';
+import * as AuthSession from "expo-auth-session";
+
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -58,4 +60,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Login
+export default Login;
