@@ -6,8 +6,8 @@ const Logout = ({setUserInfo, token}) => {
     const logout = async () => {
         try {
             await AuthSession.revokeAsync(
-                { token: token },
-                { revocationEndpoint: "https://oauth2.googleapis.com/revoke?token={access_token}" }
+                {token: token},
+                {revocationEndpoint: "https://oauth2.googleapis.com/revoke?token={access_token}"}
             );
             setUserInfo(null);
         } catch (error) {
@@ -16,10 +16,15 @@ const Logout = ({setUserInfo, token}) => {
     };
 
     return (
-        <FontAwesome5.Button onPress={logout}>
-            <Text>Logout</Text>
-        </FontAwesome5.Button>
+        <Button style={styles.logoutButtonText} onPress={logout} title={"Logout"}/>
     )
 }
+
+const styles = StyleSheet.create({
+    logoutButtonText: {
+        color: "white",
+        fontWeight: "bold"
+    }
+});
 
 export default Logout;
