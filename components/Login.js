@@ -6,9 +6,7 @@ import {FontAwesome5} from '@expo/vector-icons';
 
 WebBrowser.maybeCompleteAuthSession();
 
-const Login = ({setUserInfo}) => {
-    const [token, setToken] = useState("");
-
+const Login = ({setUserInfo, setToken, token}) => {
     const [request, response, promptAsync] = Google.useAuthRequest({
         clientId: "488317155424-og3ekdvksu4snuirldrbd5oo0ns2spkn.apps.googleusercontent.com",
         androidClientId: "488317155424-0uqgr0t2qcluc47vavt2ue1rea26c701.apps.googleusercontent.com"

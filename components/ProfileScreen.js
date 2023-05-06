@@ -5,12 +5,13 @@ import Profile from "./Profile";
 
 const ProfileScreen = () => {
     const [userInfo, setUserInfo] = useState(null);
+    const [token, setToken] = useState("");
 
     return (
         <View style={styles.container}>
             {userInfo === null ?
-                (<Login setUserInfo={setUserInfo}/>) :
-                (<Profile userInfo={userInfo}/>)
+                (<Login setUserInfo={setUserInfo} setToken={setToken} token={token}/>) :
+                (<Profile setUserInfo={setUserInfo} userInfo={userInfo} token={token}/>)
             }
         </View>
     );

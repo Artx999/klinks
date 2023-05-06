@@ -1,9 +1,11 @@
 import {Image, StyleSheet, Text, View} from "react-native";
 import {useEffect, useState} from "react";
+import * as AuthSession from "expo-auth-session";
+import Logout from "./Logout";
 
 const defaultProfilePicture = require("../assets/default-profile-picture.jpg");
 
-const Profile = ({userInfo}) => {
+const Profile = ({setUserInfo, userInfo, token}) => {
     const [profilePicture, setProfilePicture] = useState(defaultProfilePicture);
 
     useEffect(() => {
@@ -15,6 +17,7 @@ const Profile = ({userInfo}) => {
         <View style={styles.container}>
             <Image source={profilePicture} style={styles.profilePicture} />
             <Text>{userInfo.name}</Text>
+            <Logout setUserInfo={setUserInfo} token={token}></Logout>
         </View>
     )
 }
