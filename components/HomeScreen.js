@@ -8,14 +8,12 @@ import SeachBar from "./SeachBar";
 const HomeScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <DrinkList navigation={navigation}></DrinkList>
-        </View>,
-        <View style={styles.container}>
             <SeachBar>
 
             </SeachBar>
-
+            <DrinkList navigation={navigation}></DrinkList>
         </View>
+
     )
 }
 const styles = StyleSheet.create({
