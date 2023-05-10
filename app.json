@@ -3,6 +3,7 @@
     "name": "klinks",
     "slug": "klinks",
     "version": "1.0.0",
+    "owner": "artx999",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -21,10 +22,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "no.artx999.klinks"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "scheme": "klinks",
+    "extra": {
+      "eas": {
+        "projectId": "819bf9c4-350c-4743-9023-ce4d61fec467"
+      }
     }
   }
 }
