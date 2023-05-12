@@ -1,6 +1,8 @@
-name: EAS Build
+name: EAS Production Build
 on:
-  push
+  push:
+    branches:
+      - main
 jobs:
   build:
     name: Install and build
@@ -25,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: ⚒️ Build on EAS
-        run: eas build --platform android --profile development --local
+        run: eas build --platform android --profile production --local
 
       - name: ⬆️Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
