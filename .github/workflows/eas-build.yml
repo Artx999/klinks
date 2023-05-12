@@ -6,21 +6,28 @@ jobs:
     name: Install and build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: npm
-      - name: Setup Expo and EAS
+
+      - name: 🏗 Setup Expo and EAS
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
-      - name: Install dependencies
+
+      - name: 📦 Install dependencies
         run: npm ci
-      - name: Build on EAS
+
+      - name: ⚒️ Build on EAS
         run: eas build --platform android --profile development --local
-      - name: Upload a Build Artifact
+
+      - name: ⬆️Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
           name: dev-build
