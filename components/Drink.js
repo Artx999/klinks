@@ -1,6 +1,7 @@
-import {Image, StyleSheet, Text, View} from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import Ingredients from "./Ingredients";
 import Instructions from "./Instructions";
+import LikeButton from "./LikeButton";
 
 const Drink = ({route}) => {
     const drink = route.params.drink;
@@ -17,10 +18,11 @@ const Drink = ({route}) => {
                     <Text style={styles.description}>{drink.description}</Text>
                 </View>
             </View>
+            <LikeButton drink={drink} />
             <Ingredients ingredients={drink.ingredients} />
             <Instructions instructions={drink.instructions} />
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -55,6 +57,6 @@ const styles = StyleSheet.create({
     },
     description: {
     },
-})
+});
 
 export default Drink;

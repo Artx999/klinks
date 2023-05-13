@@ -7,12 +7,15 @@ import HomeScreen from "./components/HomeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import LikedDrinksScreen from "./components/LikedDrinksScreen";
 import { Ionicons } from '@expo/vector-icons';
+import { LikedDrinksProvider } from './components/LikedDrinksContext';
+
 
 const Tab = createBottomTabNavigator();
 
 const App = () => {
     return (
-        <NavigationContainer>
+        <LikedDrinksProvider>
+            <NavigationContainer>
             <StatusBar style="auto"/>
             <Tab.Navigator
                 initialRouteName="Home"
@@ -40,6 +43,8 @@ const App = () => {
                 <Tab.Screen name="Liked Drinks" component={LikedDrinksScreen} />
             </Tab.Navigator>
         </NavigationContainer>
+        </LikedDrinksProvider>
+
     );
 }
 
