@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v3.1.2
         with:
           name: dev-build
-          path: /home/runner/work/klinks/klinks/build-*.apk
+          path: /home/runner/work/klinks/klinks/production-build-*.apk
