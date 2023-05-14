@@ -8,15 +8,18 @@ const LikedDrinksScreen = () => {
     const renderItem = ({ item }) => (
         <View style={styles.item}>
             <Text style={styles.title}>{item.name}</Text>
-        </View>
-    );
+
+            <Text style={styles.title}>{item.name}</Text>
+
+</View>
+);
 
     return (
         <View style={styles.container}>
             <FlatList
                 data={likedDrinks}
                 renderItem={renderItem}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item.id.toString()}
             />
         </View>
     );

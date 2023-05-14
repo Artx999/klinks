@@ -1,38 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Pressable, StyleSheet } from "react-native";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import React, { useContext, useEffect, useState } from 'react';
+import { TouchableOpacity } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 import { LikedDrinksContext } from './LikedDrinksContext';
 
 const LikeButton = ({ drink }) => {
     const [likedDrinks, setLikedDrinks] = useContext(LikedDrinksContext);
-    const [liked, setLiked] = useState(false);
+    const [isLiked, setIsLiked] = useState(false);
 
     useEffect(() => {
-        setLiked(likedDrinks.some(likedDrink => likedDrink.id === drink.id));
+        setIsLiked(likedDrinks.some(likedDrink => likedDrink.id === drink.id));
     }, [likedDrinks]);
 
-    const toggleLike = () => {
-        if (liked) {
-            setLikedDrinks(likedDrinks.filter(likedDrink => likedDrink.id !== drink.id));
+    const handlePress = () => {
+        if (isLiked) {
+            setLikedDrinks(prevDrinks => prevDrinks.filter(d => d.id !== drink.id));
         } else {
-            setLikedDrinks([...likedDrinks, drink]);
+            setLikedDrinks(prevDrinks => [...prevDrinks, drink]);
         }
-    };
+    }
 
     return (
-        <Pressable style={styles.button} onPress={toggleLike}>
-            <Icon name={liked ? "heart" : "heart-o"} size={30} color={liked ? "red" : "gray"} />
-        </Pressable>
+        <TouchableOpacity onPress={handlePress}>
+            <AntDesign name={isLiked ? 'heart' : 'hearto'} size={24} color="red" />
+        </TouchableOpacity>
     );
-};
-
-const styles = StyleSheet.create({
-    button: {
-        position: 'absolute',
-        top: 10,
-        right: 10,
-        padding: 10,
-    },
-});
+}
 
 export default LikeButton;

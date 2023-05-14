@@ -22,7 +22,7 @@ const DrinkList = ({navigation}) => {
                 limit(limitLoad)
             );
             const docSnap = await getDocs(initialQuery);
-            const docData = docSnap.docs.map(document => document.data());
+            const docData = docSnap.docs.map(document => ({ id: document.id, ...document.data() }));
 
             setDrinks(docData);
             setLastVisible(docData[docData.length - 1].name);
@@ -45,7 +45,7 @@ const DrinkList = ({navigation}) => {
                 limit(limitLoad)
             );
             const docSnap = await getDocs(additionalQuery);
-            const docData = docSnap.docs.map(document => document.data());
+            const docData = docSnap.docs.map(document => ({ id: document.id, ...document.data() }));
 
             setDrinks([...drinks, ...docData]);
             setLastVisible(docData[docData.length - 1].name);
@@ -55,6 +55,7 @@ const DrinkList = ({navigation}) => {
             console.log(error)
         }
     }
+
 
     const renderFooter = () => {
         try {

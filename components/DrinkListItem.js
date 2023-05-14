@@ -1,6 +1,7 @@
-import {Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import {getStorage, getDownloadURL, ref} from "firebase/storage";
-import {useEffect, useState} from "react";
+import React, { useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { getStorage, getDownloadURL, ref } from 'firebase/storage';
+import LikeButton from './LikeButton';
 
 const DrinkListItem = ({drink, navigation}) => {
     const [drinkImage, setDrinkImage] = useState(require("../assets/default-drink.jpg"));
@@ -26,6 +27,7 @@ const DrinkListItem = ({drink, navigation}) => {
             <View style={styles.text}>
                 <Text style={styles.name}>{drink.name}</Text>
                 <Text numberOfLines={2} style={styles.description}>{drink.description}</Text>
+                <LikeButton drink={drink} />
             </View>
         </TouchableOpacity>
     )
