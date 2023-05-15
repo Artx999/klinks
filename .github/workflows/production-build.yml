@@ -5,7 +5,7 @@ on:
       - main
 jobs:
   build:
-    name: Install and build
+    name: Install, build and submit
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
@@ -33,5 +33,5 @@ jobs:
         env:
           PLAY_CONFIG_JSON: ${{ secrets.GOOGLE_SERVICES_ACCOUNT_KEY_JSON }}
 
-      - name: ⚒️ Build on EAS
+      - name: ⚒️ Build on EAS and auto submit
         run: eas build --platform android --profile production --auto-submit --local

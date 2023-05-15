@@ -2,7 +2,7 @@ name: EAS Preview Build
 on: [pull_request]
 jobs:
   build:
-    name: Install and build
+    name: Install, build and upload
     runs-on: ubuntu-latest
     steps:
       - name: 🏗 Setup repo
