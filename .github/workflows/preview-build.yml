@@ -1,0 +1,33 @@
+name: EAS Preview Build
+on: [pull_request]
+jobs:
+  build:
+    name: Install, build and upload
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: npm
+
+      - name: 🏗 Setup Expo and EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: ⚒️ Build on EAS
+        run: eas build --platform android --profile preview --local
+
+      - name: ⬆️Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: preview-build
+          path: /home/runner/work/klinks/klinks/build-*.apk
