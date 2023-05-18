@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 const LikedDrinksScreen = () => {
     return (
         <View style={styles.container}>
-            <Text>Liked Drinks</Text>
+            <Text>Kommer senere...</Text>
         </View>
     );
 }

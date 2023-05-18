@@ -23,6 +23,7 @@ const DrinkListItem = ({drink, navigation}) => {
             <View style={styles.pictureContainer}>
                 <Image source={drinkImage} style={styles.picture} />
             </View>
+            <View style={styles.overlay}></View>
             <View style={styles.text}>
                 <Text style={styles.name}>{drink.name}</Text>
                 <Text numberOfLines={2} style={styles.description}>{drink.description}</Text>
@@ -33,10 +34,10 @@ const DrinkListItem = ({drink, navigation}) => {
 
 const styles = StyleSheet.create({
     item: {
-        flexDirection: "row",
-        height: 100,
-        width: "100%",
         marginVertical: 5,
+        width: "100%",
+        height: 100,
+        flexDirection: "row",
     },
     pictureContainer: {
         flex: 1,
@@ -49,6 +50,7 @@ const styles = StyleSheet.create({
         height: undefined,
         resizeMode: "cover",
         aspectRatio: 1,
+        borderRadius: 10,
         left: 0,
     },
     text: {
@@ -56,12 +58,16 @@ const styles = StyleSheet.create({
         overflow: "hidden"
     },
     name: {
-        padding: 10,
+        paddingTop: 10,
+        paddingLeft: 10,
         fontSize: 18,
+        fontFamily: "Poppins-SemiBold"
     },
     description: {
-        paddingHorizontal: 10,
-    },
+        paddingTop: 10,
+        paddingLeft: 10,
+        fontFamily: "Poppins-Regular"
+    }
 })
 
 export default DrinkListItem;
