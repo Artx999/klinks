@@ -12,15 +12,13 @@ const Drink = ({route}) => {
             showsVerticalScrollIndicator={false}
         >
             <View style={styles.pictureContainer}>
-                <Image source={drinkImage} style={styles.picture} />
+                <Image source={drinkImage} style={styles.picture}/>
             </View>
-            <View style={styles.text}>
-                <Text style={styles.name}>{drink.name}</Text>
-                <Text style={styles.description}>{drink.description}</Text>
-            </View>
+            <Text style={styles.description}>{drink.description}</Text>
+
             <View style={styles.ing}>
-                <Ingredients ingredients={drink.ingredients} />
-                <Instructions instructions={drink.instructions} />
+                <Ingredients ingredients={drink.ingredients}/>
+                <Instructions instructions={drink.instructions}/>
             </View>
         </ScrollView>
     )
@@ -48,15 +46,8 @@ const styles = StyleSheet.create({
         aspectRatio: 1,
         resizeMode: 'cover'
     },
-    text: {
-        marginTop: 20,
-        width: "100%",
-    },
-    name: {
-        fontSize: 30,
-        fontFamily: "Poppins-ExtraBold"
-    },
     description: {
+        marginTop: 20,
         fontFamily: "Poppins-Regular"
     },
     ing: {

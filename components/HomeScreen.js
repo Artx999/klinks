@@ -23,6 +23,8 @@ const HomeScreen = ({navigation}) => {
             screenOptions={{
                 headerTitleStyle: {
                     color: '#F2736A',
+                    fontFamily: "Poppins-ExtraBold",
+                    fontSize: 30
                 },
                 headerTitleAlign: "center"
             }}

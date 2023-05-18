@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 2,
         color: "#F2736A",
-        fontFamily: "Poppins-SemiBold"
+        fontFamily: "Poppins-SemiBold",
+        fontSize: 15
     },
     instruction: {
         fontFamily: "Poppins-Regular"
