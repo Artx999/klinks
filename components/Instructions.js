@@ -23,7 +23,8 @@ const Instructions = ({ instructions }) => {
 
 const styles = StyleSheet.create({
     instructions: {
-        marginVertical: 10
+        marginVertical: 10,
+        marginBottom: 30
     },
     header: {
         fontSize: 25,
