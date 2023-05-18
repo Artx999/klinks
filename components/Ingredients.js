@@ -18,7 +18,7 @@ const Ingredients = ({ ingredients }) => {
 
 const styles = StyleSheet.create({
     ingredients: {
-        marginVertical: 10
+        marginVertical: 10,
     },
     header: {
         fontSize: 25,

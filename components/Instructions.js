@@ -7,10 +7,15 @@ const Instructions = ({ instructions }) => {
             <Text style={styles.header}>Instructions</Text>
             <FlatList
                 data={instructions}
-                renderItem={({ item }) => (
-                    <Instruction item={item} />
+                renderItem={({ item, index }) => (
+                    <Instruction
+                        item={item}
+                        index={index}
+                        total={instructions.length}
+                    />
                 )}
                 scrollEnabled={false}
+                keyExtractor={(item, index) => index.toString()}
             />
         </View>
     )

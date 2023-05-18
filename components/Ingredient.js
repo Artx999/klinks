@@ -11,7 +11,10 @@ const Ingredient = ({item}) => {
 const styles = StyleSheet.create({
     ingredient: {
         marginVertical: 2,
-        fontFamily: "Poppins-Regular"
+        paddingVertical: 6,
+        fontFamily: "Poppins-Regular",
+        borderBottomColor: "rgba(0, 0, 0, 0.2)",
+        borderBottomWidth: 1
     },
     prefix: {
         fontFamily: "Poppins-SemiBold"
