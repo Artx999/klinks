@@ -8,7 +8,8 @@ const Instruction = ({item}) => {
 
 const styles = StyleSheet.create({
     instruction: {
-        marginVertical: 10
+        marginVertical: 10,
+        fontFamily: "Poppins-Regular"
     }
 })
 

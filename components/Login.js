@@ -1,8 +1,9 @@
 import {useEffect} from "react";
-import {StyleSheet, Text} from "react-native";
+import {Image, StyleSheet, Text, View} from "react-native";
 import * as WebBrowser from "expo-web-browser";
 import * as Google from "expo-auth-session/providers/google";
 import {FontAwesome5} from '@expo/vector-icons';
+import Logout from "./Logout";
 
 
 WebBrowser.maybeCompleteAuthSession();
@@ -37,24 +38,65 @@ const Login = ({setUserInfo, setToken, token}) => {
     };
 
     return (
-        <FontAwesome5.Button disabled={!request} name="google" onPress={() => {
-            promptAsync()
-        }}>
-            <Text style={styles.loginButtonText}>Log In With Google</Text>
-        </FontAwesome5.Button>
+        <>
+            <View style={styles.header}>
+                <Text style={styles.title}>Login</Text>
+            </View>
+            <View style={styles.content}>
+                <FontAwesome5.Button disabled={!request} name="google" onPress={() => {
+                    promptAsync()
+                }}>
+                    <Text style={styles.loginButtonText}>Log In With Google</Text>
+                </FontAwesome5.Button>
+            </View>
+        </>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: '100%',
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
     },
     loginButtonText: {
         color: "white",
         fontWeight: "bold"
+    },
+    header: {
+        width: '100%',
+        height: 235,
+        position: "relative",
+        backgroundColor: '#F2736A',
+        alignItems: 'center',
+        justifyContent: 'flex-start'
+    },
+    title: {
+        marginTop: 40,
+        color: '#fff',
+        fontSize: 30
+    },
+    profilePictureWrapper: {
+        bottom: -45,
+        position: "absolute",
+        borderRadius: 65, // Half of height and width + borderWidth
+        borderStyle: "solid",
+        borderWidth: 5,
+        borderColor: "#fff",
+        overflow: "hidden"
+    },
+    profilePicture: {
+        width: 120,
+        height: 120,
+    },
+    content: {
+        marginTop: 60,
+        width: "100%",
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        gap: 20
     }
 });
 

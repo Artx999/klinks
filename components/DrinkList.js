@@ -1,4 +1,4 @@
-import {StyleSheet, FlatList, View, ActivityIndicator} from "react-native";
+import {StyleSheet, FlatList, View, ActivityIndicator, Text} from "react-native";
 import {useEffect, useState} from "react";
 import {collection, getDocs, limit, orderBy, query, startAfter} from "firebase/firestore";
 import {db} from "../firebaseConfig";
@@ -88,6 +88,8 @@ const DrinkList = ({navigation}) => {
                 }}
 
                 refreshing={refreshing}
+                showsVerticalScrollIndicator={false}
+
             />
         </View>
     );
@@ -95,9 +97,9 @@ const DrinkList = ({navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: "column",
-        width: "100%",
+        paddingLeft: 15,
+        paddingRight: 15,
+        width: "100%"
     },
 })
 

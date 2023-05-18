@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Button} from "react-native";
+import {StyleSheet, Text, View, Button, Pressable} from "react-native";
 import {FontAwesome5} from '@expo/vector-icons';
 import * as AuthSession from "expo-auth-session";
 
@@ -16,14 +16,26 @@ const Logout = ({setUserInfo, token}) => {
     };
 
     return (
-        <Button style={styles.logoutButtonText} onPress={logout} title={"Logout"}/>
+        <Pressable style={styles.logoutButton} onPress={logout}>
+            <Text style={styles.logoutButtonText}>Logout</Text>
+        </Pressable>
     )
 }
 
 const styles = StyleSheet.create({
+    logoutButton: {
+        top: 44.5,
+        right: 15,
+        paddingTop: 5,
+        paddingLeft: 15,
+        paddingRight: 15,
+        paddingBottom: 7,
+        position: "absolute",
+        backgroundColor: "rgba(255, 255, 255, 0)"
+    },
     logoutButtonText: {
-        color: "white",
-        fontWeight: "bold"
+        color: "#fff",
+        fontSize: 18
     }
 });
 
