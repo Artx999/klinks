@@ -7,6 +7,7 @@ import HomeScreen from "./components/HomeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import LikedDrinksScreen from "./components/LikedDrinksScreen";
 import { Ionicons } from '@expo/vector-icons';
+import style from "./style";
 
 const Tab = createBottomTabNavigator();
 
