@@ -17,7 +17,7 @@ const Logout = ({setUserInfo, token}) => {
 
     return (
         <Pressable style={styles.logoutButton} onPress={logout}>
-            <Text style={styles.logoutButtonText}>Logout</Text>
+            <Text style={styles.logoutButtonText}>Logg ut</Text>
         </Pressable>
     )
 }

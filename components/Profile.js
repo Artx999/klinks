@@ -17,7 +17,7 @@ const Profile = ({setUserInfo, userInfo, token}) => {
         <>
             <View style={styles.header}>
                 <View style={styles.headerTop}>
-                    <Text style={styles.title}>Profile</Text>
+                    <Text style={styles.title}>Profil</Text>
                     <Logout setUserInfo={setUserInfo} token={token}></Logout>
                 </View>
                 <View style={styles.profilePictureWrapper}>

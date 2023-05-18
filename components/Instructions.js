@@ -4,7 +4,7 @@ import Instruction from "./Instruction";
 const Instructions = ({ instructions }) => {
     return (
         <View style={styles.instructions}>
-            <Text style={styles.header}>Instructions</Text>
+            <Text style={styles.header}>Instruksjoner</Text>
             <FlatList
                 data={instructions}
                 renderItem={({ item, index }) => (
