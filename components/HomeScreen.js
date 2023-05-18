@@ -19,7 +19,14 @@ function LogoTitle() {
 
 const HomeScreen = ({navigation}) => {
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            screenOptions={{
+                headerTitleStyle: {
+                    color: '#F2736A',
+                },
+                headerTitleAlign: "center"
+            }}
+        >
             <Stack.Screen
                 name="DrinkList"
                 component={DrinkList}
@@ -28,7 +35,11 @@ const HomeScreen = ({navigation}) => {
                 }}
                 navigation={navigation}
             />
-            <Stack.Screen name="Drink" component={Drink}/>
+            <Stack.Screen
+                name="Drink"
+                component={Drink}
+                options={({ route }) => ({ title: route.params.drink.name })}
+            />
         </Stack.Navigator>
     )
 }
