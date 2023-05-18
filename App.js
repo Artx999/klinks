@@ -7,13 +7,33 @@ import HomeScreen from "./components/HomeScreen";
 import ProfileScreen from "./components/ProfileScreen";
 import LikedDrinksScreen from "./components/LikedDrinksScreen";
 import { Ionicons } from '@expo/vector-icons';
-import style from "./style";
+import { useFonts } from 'expo-font';
+import * as SplashScreen from 'expo-splash-screen';
+import {useCallback} from "react";
 
+SplashScreen.preventAutoHideAsync();
 const Tab = createBottomTabNavigator();
 
 const App = () => {
+    const [fontsLoaded] = useFonts({
+        "Poppins-Regular": require('./assets/fonts/Poppins/Poppins-Regular.ttf'),
+        "Poppins-Thin": require('./assets/fonts/Poppins/Poppins-Thin.ttf'),
+        "Poppins-SemiBold": require('./assets/fonts/Poppins/Poppins-SemiBold.ttf'),
+        "Poppins-ExtraBold": require('./assets/fonts/Poppins/Poppins-ExtraBold.ttf'),
+    });
+
+    const onLayoutRootView = useCallback(async () => {
+        if (fontsLoaded) {
+            await SplashScreen.hideAsync();
+        }
+    }, [fontsLoaded]);
+
+    if (!fontsLoaded) {
+        return null;
+    }
+
     return (
-        <NavigationContainer>
+        <NavigationContainer onReady={onLayoutRootView}>
             <StatusBar style="auto"/>
             <Tab.Navigator
                 initialRouteName="Home"
