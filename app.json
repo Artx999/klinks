@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "Klinks",
+    "slug": "klinks",
+    "version": "1.1.0",
+    "owner": "artx999",
+    "orientation": "portrait",
+    "icon": "./assets/klinks-logo.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/klinks-splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/klinks-logo.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "no.artx999.klinks"
+    },
+    "web": {
+      "favicon": "./assets/klinks-logo.png"
+    },
+    "scheme": "klinks",
+    "extra": {
+      "eas": {
+        "projectId": "819bf9c4-350c-4743-9023-ce4d61fec467"
+      }
+    }
+  }
+}
